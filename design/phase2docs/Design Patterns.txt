@@ -1,0 +1,89 @@
+Strategy Design
+ - ISystem was used to be able to use any database we want without changing the rest of the code beyond a new
+ SystemAccess class. Any method in use cases that would call on a gateway to update the database calls this interface
+ instead. That way, through dependency inversion, we can use whatever database we want. We were able to easily switch
+ from a .csv database to .ser because of this.
+ - IPresenter was used to be able to change what kind of presenter view we wanted and only have to create a new
+ presenter class and implement those methods. Each use case has an interface with corresponding response methods
+ are all inherited by IPresenter. That way we guarantee whatever presenter we use, as long as it implements IPresenter,
+ it will implement the proper response for each action in the use cases.
+
+Observer Pattern
+ - Used in Egg -> PetManager, PetManager -> SystemAccess and UserManager -> SystemAccess, TradeRequest -> AccountData
+ - When an Egg hatches, the Pets map in PetManager has to be updated to replace the Egg with a Pet. Since the hatch
+ timer occurs on a background thread created in the Egg entity, the only way to maintain consistency is to notify the
+ PetManager that the Egg has changed through the observer design pattern.
+ - Whenever the Pets storage or User storage is changed, they have to notify the ISystem class so the corresponding
+ databases can be updated to maintain data consistency between the two.
+ - The sender and receiver's account data (which stores trade requests) are observers of each trade request, so they
+ can be added and removed whenever a trade request is made and cancelled/accepted. This maintains consistency between
+ the two lists of trade requests
+ - Leaderboard observes pet data. That way, whenever pet data changes that concerns a category of the leaderboard,
+ the leaderboard can change accordingly
+
+Dependency Injection
+ - Instances of user base, presenters, observer manager, other use cases, etc. are injected into the classes instead
+ of being created at the construction of their classes
+ - The dependencies are injected when building the program. Each component of the program (all use cases, controllers,
+ etc.) used to be built inside the main console controller.
+ - Extracting them makes the code cleaner and easier to read the code
+ - This makes it so the instances of each object are testable
+
+Builder Pattern
+ - The ProgramBuilder directory is the literal implementation of this pattern
+ - Since so many components need to be built, organizing them this way makes it easier to add new components in the
+ process of building the program since you know what gets built first and what depends on what.
+ - It also helps us follow clean architecture, since the order of building follows clean architecture layers.
+ If we can't insert a feature into the program builder, it most likely does not follow clean architecture
+
+Factory Pattern
+ - The PetFactory class in the PetSystem directory makes new types of pets using the factory method pattern
+ - Notifications in the ProgramLibrary directory uses the Factory pattern to make different types of notifications
+
+Updates for Phase2
+ - Cleaned up the Presenter interfaces and the class that incorporates it so that the large class code smell is reduced
+
+ - Decoupled any Entities dependencies in the Controller layer.  In the AccountController, some methods were of
+ type User, which means that the User object had to be imported.  By changing it to String, this import was removed and
+ Clean Architecture is still followed
+
+ - Instead of having to call the presenter in the parameter in the use case methods, the presenter is injected into the
+ manager through dependency injection.  This means that the use case methods has one less parameter (which reduces the
+ long parameter code smell from forming) and also allows us to present responses in methods where the presenter cannot
+ be used as a parameter. Previously, we used a print statement directly in the use case, but this violated clean
+ architecture
+
+ - Made sure that the program that does run is in the main branch
+
+ - Reorganized the file structure so that data, console controllers, gateways, utilities, program builder, and modules
+ are separated into packages. In the modules, each component of our program has its own package where it is further
+ separated into the different layers of clean architecture
+
+ - Created a TimerManager class rather than having those methods handled in the PetManager
+    - This prevented the PetManager from becoming too large (bloated class code smells) and helps follow the single
+    responsibility principle
+    - This also makes it more extensible and general for other features that may require timers. THe TimerManager was
+    originally purposed for egg hatching, but was easily extended to be used for depreciation of pet features
+    (hunger, happiness, etc.)
+
+ - We extracted the user base from UserManager and made it its own class to reduce coupling between use cases.
+ Lots of use cases depended on UserManager because it stored the set of users and these use cases typically required
+ getting a user from a username or something similar. We took that functionality out of UserManager
+ (which helps follow the single responsibility principle) and injected UserBase into the other use cases instead.
+ This makes it much easier to test since we only have to create a UserBase entity object rather than having to
+ create a whole UserManager and the other dependencies that come with it.
+
+ - We decided to have TradeRequests stored in AccountData rather than TradeManager like we've been doing for pets and
+ users.
+    - This allows us to leverage accountData to avoid having to create a new DB file to store the requests in
+    and creating a third instance of the db gateway
+    - Since trade requests should only be operated on by the user who is currently logged in, this makes it easier
+    for us to quickly access the relevant trade requests of the current user and not bother with others
+    - The above point also opens us up to potential enhancements of pending trade notifications on login
+
+- Pet Factory was implemented to make pet creation easier. Pet generation is randomized on egg hatching and the use of
+the factory design pattern allow quick creation of different Pet Types.
+    - This prevented the Egg class from becoming too large (bloating code smell) and allows it to follow the single use
+    principal.
+    - Implementation of the factory design pattern allows for easy addition of new pet types - code extensibility
+    - Reduces coupling between the Egg class and the Pet subclasses classes

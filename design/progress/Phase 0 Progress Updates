@@ -1,0 +1,49 @@
+
+Hey Everyone! This is where we will be tracking class completion and progress, so make sure to pull before you start
+working and update this document before pushing. Please update in the format "(Name) - Status" beside the component you
+worked on.
+
+~~Entity Classes~~
+
+User: Eswar - Added getters/setters for instance variables
+      Francisco - Changed private instance attributes to protected, define unique userId
+      Angela - added setHistoryData
+AdminUser(User): Francisco - Update Admin constructor with adminStatus
+RegUser(User): Francisco - Added RegUser constructor and update with adminStatus
+AccountData: Francisco - AccountData constructors and unique accountId
+HistoryData: Nairi - Changed loginHis from a Stack to a Deque.
+
+~~Controllers~~
+
+LoginSystem: Paulo - Added UserManager and Presenter attributes. Created prompts for login. Reads from data file on creation.
+	     Francisco - Clean up and fix errors
+UserController: Ysha - Finished functionality of UserController, not debugged
+AccountController: Ysha - Finished functionality of AccountController, not debugged
+
+~~Use Cases~~
+
+LoginManager: Nairi- Added RecordLogin() and added it to UserManager.
+System:
+UserManager: Paulo - Can now use it to login. Default Admin user on creation with username and password: ADMIN and password.
+             Francisco - Can now distinguish between regular users and admin users
+	     Eswar - Make it possible for Admin users to upgrade regular users to admin users
+AccountManager: Paulo - Define behaviour
+		Francisco - Clean up
+
+~~Gateways~~
+
+SystemAccess: Paulo - Implemented methods from ISystem. Added constructor to store a UserManager and FilePath
+
+~~Presenters~~
+
+ConsolePresenter: Paulo - Implemented methods from the interfaces to show responses on the command line
+
+~~Interfaces~~
+
+ISystem: Paulo - methods to write data to CSV, addUser, removeUser, and refresh data
+         Francisco - change ArrayList to a more general List type in ReadFromCSV
+ILogin:
+IUserManager: Paulo - methods to show responses to UserManager methods on presenter
+IAccountManager: Paulo - methods to show AccountData and UserHistory on presenter
+
+

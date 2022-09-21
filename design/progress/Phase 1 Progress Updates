@@ -1,0 +1,27 @@
+
+Hey Everyone! This is where we will be tracking class completion and progress, so make sure to pull before you start
+working and update this document before pushing. Please update in the format "(Name) - Status" beside the component you
+worked on.
+
+~~Entity Classes~~
+Login/Entities: Francisco - javadocs and incorporation of DataType
+PetData: Ysha - Added PetData to store variables
+~~Controllers~~
+LeaderboardController: Ysha -
+LeaderboardConsoleController: Ysha
+
+~~Use Cases~~
+
+
+~~Gateways~~
+
+
+~~Presenters~~
+
+
+~~Interfaces~~
+DataType: Francisco - implementation and encapsulation of DataType
+
+
+~~Other~~
+Login/DataManager: Francisco - refactoring

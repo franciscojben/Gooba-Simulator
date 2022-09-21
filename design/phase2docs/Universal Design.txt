@@ -1,0 +1,31 @@
+What this program could do to follow the 7 principles of universal design (ethics).
+
+1. Equitable use
+- We could add an option for users to reorder the menu options to better suit their needs
+- Provide different ways to access menu options configurable through a settings menu
+- Program follows equitable use by the fact that the pet system is not different for regular users and admins (both users have the same system of pets)
+
+2. Flexibility in use
+- Like mentioned earlier, provide options to reconfigure menu options and means to access these options
+- Incorporate a GUI for people who do not have a keyboard available
+
+3. Simple and intuitive use
+- Program mostly follows this principle
+- Information could be better arranged in order of importance (based on a UI/UX study)
+
+4. Perceptible information
+- Incorporating a GUI could mean the information is easier to be understood regardless of environment
+- Make the program compatible with braille so that blind users could enjoy the program (would require research and design teams)
+
+5. Tolerance for error
+- There could be warnings for unsupported actions a user could take
+- Catch errors that could break the .ser database
+
+6. Low physical effort
+- The program could have a keywords option where a user can assign keywords to specific phrases or words
+- The program could have a user finder feature so that it is easier to find the list of users instead of going through the .ser database
+
+7. Size and space for approach and use
+- If we used a GUI, we could make sure the buttons are of adequate size so that it is easier to use (it could also be configured in the menus)
+- Improve formatting of the text so that it is easier to see all important menu options in the terminal
+

@@ -1,0 +1,32 @@
+
+Hey Everyone! This is where we will be tracking class completion and progress, so make sure to pull before you start
+working and update this document before pushing. Please update in the format "(Name) - Status" beside the component you
+worked on.
+
+~~Entity Classes~~
+Francisco - NotificationType
+Ysha - Graveyard and Pet classes
+Angela - incorporated pet factory
+
+~~Controllers~~
+Francisco - NotificationController
+Ysha - added graveyard and bury functionality to PetConsoleController
+Ysha - attempted to incorporate leaderboard controller functionality
+
+~~Use Cases~~
+Francisco - NotificationManager
+Injong - added pet rename functionality
+
+~~Gateways~~
+
+~~Presenters~~
+Francisco - Cleaned up presenters
+
+~~Interfaces~~
+Francisco - Notification
+
+~~Other~~
+Francisco - Implement the builder pattern for the controllers
+Francisco - Implement the Notification system
+Paulo - improve code organization
+Angela - added unit tests to entities and usecases
