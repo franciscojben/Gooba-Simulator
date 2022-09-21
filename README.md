@@ -8,6 +8,7 @@ Here are the instructions to start the program
     - If you are not running the program through IntelliJ, you may have to compile the java files to class files first.  It is recommended to use IntelliJ as it will do this automatically for you
 - After setting up the java files, run the green arrow in Main (or the compiled file if you compiled it manually) and everything should be ready for you
     - Please keep in mind that the program relies on user interaction with the terminal
+- The program should now be ready to use!
 
 # KNOWN ISSUES
 
