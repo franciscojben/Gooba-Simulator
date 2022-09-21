@@ -21,5 +21,5 @@ This program was created by group 0236 from the class CSC207 in Summer 2022 at t
 
 **By using any code written in this program, you must give credit to group 0236 from the Summer 2022 CSC207 class.**  **You also agree that the code is written *as is* and as such, we bear no responsibility for any issues you may have when using this code.**
 
-**group0236: Francisco Benavides, Eswar Grandhi, Paulo Guerrero, Nairi Kelian, Angela Niu, Ysha Santos, Injong Won**
+**group0236:** Francisco Benavides, Eswar Grandhi, Paulo Guerrero, Nairi Kelian, Angela Niu, Ysha Santos, Injong Won
 
